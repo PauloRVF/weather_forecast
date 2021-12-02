@@ -3,7 +3,7 @@ defmodule WeatherForecast.CLI.MeasurementSystemChoice do
 
   def start do
     Shell.cmd("clear")
-    Shell.info("Choose the metric system : ")
+    Shell.info("Choose the metric system : \n")
 
     units = WeatherForecast.MeasurementUnit.all()
 
@@ -30,7 +30,7 @@ defmodule WeatherForecast.CLI.MeasurementSystemChoice do
 
   defp generate_question(options) do
     opts = Enum.join(1..Enum.count(options), ",")
-    "Which one? [#{opts}]\n"
+    "\nWhich one? [#{opts}]\n"
   end
 
   defp parse_answer(answer) do
