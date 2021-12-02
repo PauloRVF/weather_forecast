@@ -3,6 +3,10 @@ defmodule WeatherForecast.City do
     defstruct name: nil,
               id: nil
   end
+  @type t :: %City{
+    name: String.t,
+    id: non_neg_integer
+  }
 
   def all, do: [
     %City{name: "São Paulo, SP - BR", id: 3448439},
