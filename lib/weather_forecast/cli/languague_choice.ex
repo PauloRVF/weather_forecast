@@ -1,27 +1,11 @@
 defmodule WeatherForecast.CLI.LanguageChoice do
   alias Mix.Shell.IO, as: Shell
 
-
-  def start do
-    Shell.cmd("clear")
-    Shell.info("Choose the language to display infos (City name and description)\n")
-
-    languages = WeatherForecast.Language.all()
-    find_unit_by_name = fn name -> Enum.find(languages, &(&1.name == name)) end
-
-    languages
-    |> display_options
-    |> generate_question
-    |> Shell.prompt
-    |> String.trim
-    |> find_unit_by_name.()
-    |> IO.inspect()
-  end
-
   def display_options(options) do
     options
-    |> Enum.each(fn item ->
-      Shell.info("#{item.name} - #{item.description}")
+    |> Enum.with_index(1)
+    |> Enum.each(fn {item, index} ->
+      Shell.info("#{index} - #{item.description}")
     end)
 
     options
@@ -30,5 +14,25 @@ defmodule WeatherForecast.CLI.LanguageChoice do
   defp generate_question(options) do
     opts = Enum.join( Enum.map(options, &(&1.name)), "," )
     "\nWhich one? [#{opts}]\n"
+  end
+
+  defp parse_answer(answer) do
+    {option, _} = Integer.parse(answer)
+    option - 1
+  end
+
+  def start do
+    Shell.cmd("clear")
+    Shell.info("Choose the language to display infos (City name and description)\n")
+
+    languages = WeatherForecast.Language.all()
+    find_unit_by_index = &Enum.at(languages, &1)
+
+    languages
+    |> display_options
+    |> generate_question
+    |> Shell.prompt
+    |> parse_answer
+    |> find_unit_by_index.()
   end
 end

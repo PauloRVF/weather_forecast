@@ -5,25 +5,8 @@ defmodule WeatherForecast.CLI.Main do
   alias WeatherForecast.CLI.MeasurementSystemChoice
   alias WeatherForecast.CLI.CityChoice
 
-
-  def run do
-    welcome_message()
-    Shell.prompt("Press enter to continue")
-
-    measurement = measurement_system_choice()
-    language = language_choice()
-
-    Shell.cmd("clear")
-    Shell.info("Well. After all configured lets check the weather of some cities")
-    Shell.prompt("Press enter to continue")
-
-    city_selection(measurement, language)
-  end
-
-  def welcome_message do
-    Shell.cmd("clear")
-    Shell.info("=+= Weather Forecast =+=")
-    Shell.info("You can check the Weather in real time for some cities")
+  def city_choice() do
+    CityChoice.start()
   end
 
   def city_selection(measurement, language) do
@@ -45,15 +28,32 @@ defmodule WeatherForecast.CLI.Main do
     |> OWClient.format_output_from_json(measurement)
   end
 
-  def measurement_system_choice() do
-    MeasurementSystemChoice.start()
-  end
-
   def language_choice() do
     LanguageChoice.start()
   end
 
-  def city_choice() do
-    CityChoice.start()
+  def measurement_system_choice() do
+    MeasurementSystemChoice.start()
   end
+
+  def run do
+    welcome_message()
+    Shell.prompt("Press enter to continue")
+
+    measurement = measurement_system_choice()
+    language = language_choice()
+
+    Shell.cmd("clear")
+    Shell.info("Well. After all configured lets check the weather of some cities")
+    Shell.prompt("Press enter to continue")
+
+    city_selection(measurement, language)
+  end
+
+  def welcome_message do
+    Shell.cmd("clear")
+    Shell.info("=+= Weather Forecast =+=")
+    Shell.info("You can check the Weather in real time for some cities")
+  end
+
 end

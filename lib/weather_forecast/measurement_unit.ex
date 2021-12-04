@@ -11,7 +11,7 @@ defmodule WeatherForecast.MeasurementUnit do
   }
 
   def all, do: [
-    %Unit{name: "standard", description: "Uses Kelvin for temperature. *Default Option*.", symbol: "K"},
+    %Unit{name: "standard", description: "Uses Kelvin for temperature.", symbol: "K"},
     %Unit{name: "metric", description: "Uses Celsius.", symbol: "C"},
     %Unit{name: "imperial", description: "Uses Fahrenheit.", symbol: "F"}
   ]

@@ -10,7 +10,7 @@ defmodule WeatherForecast.Language do
   }
 
   def all, do: [
-    %Lang{name: "en", description: "English. *Default Option*."},
+    %Lang{name: "en", description: "English. "},
     %Lang{name: "pt_br", description: "Brazilian Portuguese."},
     %Lang{name: "de", description: "Deutsch"}
   ]

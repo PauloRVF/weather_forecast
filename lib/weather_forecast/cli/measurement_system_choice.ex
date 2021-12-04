@@ -1,23 +1,6 @@
 defmodule WeatherForecast.CLI.MeasurementSystemChoice do
   alias Mix.Shell.IO, as: Shell
 
-  def start do
-    Shell.cmd("clear")
-    Shell.info("Choose the metric system : \n")
-
-    units = WeatherForecast.MeasurementUnit.all()
-
-    find_unit_by_index = &Enum.at(units, &1)
-
-    units
-    |> display_options
-    |> generate_question
-    |> Shell.prompt
-    |> parse_answer
-    |> find_unit_by_index.()
-    |> IO.inspect
-  end
-
   def display_options(options) do
     options
     |> Enum.with_index(1)
@@ -36,5 +19,21 @@ defmodule WeatherForecast.CLI.MeasurementSystemChoice do
   defp parse_answer(answer) do
     {option, _} = Integer.parse(answer)
     option - 1
+  end
+
+  def start do
+    Shell.cmd("clear")
+    Shell.info("Choose the metric system : \n")
+
+    units = WeatherForecast.MeasurementUnit.all()
+
+    find_unit_by_index = &Enum.at(units, &1)
+
+    units
+    |> display_options
+    |> generate_question
+    |> Shell.prompt
+    |> parse_answer
+    |> find_unit_by_index.()
   end
 end
