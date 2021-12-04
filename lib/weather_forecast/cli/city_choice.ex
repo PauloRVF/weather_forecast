@@ -14,7 +14,6 @@ defmodule WeatherForecast.CLI.CityChoice do
     |> Shell.prompt
     |> parse_answer
     |> find_city_by_index.()
-    |> IO.inspect
   end
 
   defp display_options(options) do
