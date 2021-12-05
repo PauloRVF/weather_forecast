@@ -1,7 +1,7 @@
 defmodule WeatherForecast.OWClient do
 
   def check_city_weather(measurement, language, city) do
-    appid = "fd63bc446b1d8f21cd9062f1764f8a49"
+    appid = Application.fetch_env!(:open_weather, :api_key)
     uri = "api.openweathermap.org/data/2.5/weather?appid=#{appid}&id=#{city.id}&units=#{measurement.name}&lang=#{language.name}"
 
     HTTPoison.start()

@@ -24,3 +24,6 @@ weather_forecast-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
+
+# Enviroment options
+.env
