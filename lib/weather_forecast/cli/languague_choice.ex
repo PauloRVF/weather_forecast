@@ -10,10 +10,7 @@ defmodule WeatherForecast.CLI.LanguageChoice do
     find_unit_by_index = &Enum.at(languages, &1)
 
     languages
-    |> display_options
-    |> generate_question
-    |> Shell.prompt
-    |> parse_answer
+    |> get_valid_option
     |> find_unit_by_index.()
   end
 end

@@ -10,10 +10,7 @@ defmodule WeatherForecast.CLI.CityChoice do
     find_city_by_index = &Enum.at(cities, &1)
 
     cities
-    |> display_options
-    |> generate_question
-    |> Shell.prompt
-    |> parse_answer
+    |> get_valid_option
     |> find_city_by_index.()
   end
 end

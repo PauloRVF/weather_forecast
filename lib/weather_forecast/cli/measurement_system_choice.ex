@@ -11,10 +11,7 @@ defmodule WeatherForecast.CLI.MeasurementSystemChoice do
     find_unit_by_index = &Enum.at(units, &1)
 
     units
-    |> display_options
-    |> generate_question
-    |> Shell.prompt
-    |> parse_answer
+    |> get_valid_option
     |> find_unit_by_index.()
   end
 end
