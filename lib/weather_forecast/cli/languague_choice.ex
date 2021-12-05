@@ -1,25 +1,6 @@
 defmodule WeatherForecast.CLI.LanguageChoice do
   alias Mix.Shell.IO, as: Shell
-
-  def display_options(options) do
-    options
-    |> Enum.with_index(1)
-    |> Enum.each(fn {item, index} ->
-      Shell.info("#{index} - #{item}")
-    end)
-
-    options
-  end
-
-  defp generate_question(options) do
-    opts = Enum.join( Enum.map(options, &(&1.name)), "," )
-    "\nWhich one? [#{opts}]\n"
-  end
-
-  defp parse_answer(answer) do
-    {option, _} = Integer.parse(answer)
-    option - 1
-  end
+  import WeatherForecast.CLI.BaseCommands
 
   def start do
     Shell.cmd("clear")

@@ -1,25 +1,6 @@
 defmodule WeatherForecast.CLI.MeasurementSystemChoice do
   alias Mix.Shell.IO, as: Shell
-
-  def display_options(options) do
-    options
-    |> Enum.with_index(1)
-    |> Enum.each(fn {option, index} ->
-      Shell.info("#{index} - #{option}")
-    end)
-
-    options
-  end
-
-  defp generate_question(options) do
-    opts = Enum.join(1..Enum.count(options), ",")
-    "\nWhich one? [#{opts}]\n"
-  end
-
-  defp parse_answer(answer) do
-    {option, _} = Integer.parse(answer)
-    option - 1
-  end
+  import WeatherForecast.CLI.BaseCommands
 
   def start do
     Shell.cmd("clear")
