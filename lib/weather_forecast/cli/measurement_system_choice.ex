@@ -5,7 +5,7 @@ defmodule WeatherForecast.CLI.MeasurementSystemChoice do
     options
     |> Enum.with_index(1)
     |> Enum.each(fn {option, index} ->
-      Shell.info("#{index} - #{option.description}")
+      Shell.info("#{index} - #{option}")
     end)
 
     options

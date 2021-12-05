@@ -5,7 +5,7 @@ defmodule WeatherForecast.CLI.LanguageChoice do
     options
     |> Enum.with_index(1)
     |> Enum.each(fn {item, index} ->
-      Shell.info("#{index} - #{item.description}")
+      Shell.info("#{index} - #{item}")
     end)
 
     options

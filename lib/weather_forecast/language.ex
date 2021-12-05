@@ -2,6 +2,10 @@ defmodule WeatherForecast.Language do
   defmodule Lang do
     defstruct name: nil,
               description: nil
+
+    defimpl String.Chars do
+      def to_string(language), do: language.description
+    end
   end
 
   @type t :: %Lang{

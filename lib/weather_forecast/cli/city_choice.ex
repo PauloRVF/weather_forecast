@@ -5,7 +5,7 @@ defmodule WeatherForecast.CLI.CityChoice do
     options
     |> Enum.with_index(1)
     |> Enum.each(fn {option, index} ->
-      Shell.info("#{index} - #{option.name}")
+      Shell.info("#{index} - #{option}")
     end)
 
     options

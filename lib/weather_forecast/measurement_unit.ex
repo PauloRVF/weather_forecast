@@ -3,6 +3,10 @@ defmodule WeatherForecast.MeasurementUnit do
     defstruct name: nil,
       description: nil,
       symbol: nil
+
+    defimpl String.Chars do
+      def to_string(unit), do: unit.description
+    end
   end
   @type t :: %Unit{
     name: String.t,

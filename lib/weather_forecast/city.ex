@@ -2,6 +2,10 @@ defmodule WeatherForecast.City do
   defmodule City do
     defstruct name: nil,
               id: nil
+
+    defimpl String.Chars do
+      def to_string(city), do: city.name
+    end
   end
   @type t :: %City{
     name: String.t,
